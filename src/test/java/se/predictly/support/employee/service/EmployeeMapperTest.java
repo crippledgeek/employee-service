@@ -7,8 +7,8 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
-import se.predictly.support.employee.persistence.model.Employee;
-import se.predictly.support.employee.service.model.EmployeeVO;
+import se.predictly.support.employee.entity.Employee;
+import se.predictly.support.employee.mapper.EmployeeMapper;
 
 class EmployeeMapperTest {
 

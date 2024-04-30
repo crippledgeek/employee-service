@@ -15,34 +15,33 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import se.predictly.support.employee.exception.EmployeeNotFoundException;
-import se.predictly.support.employee.persistence.EmployeeRepository;
-import se.predictly.support.employee.persistence.model.Employee;
-import se.predictly.support.employee.service.model.EmployeeVO;
-import se.predictly.support.employee.service.model.GenderVO;
+import se.predictly.support.employee.entity.Employee;
+import se.predictly.support.employee.model.internal.Gender;
+import se.predictly.support.employee.repositories.EmployeeRepository;
 
 @ExtendWith(MockitoExtension.class)
-class EmployeeServiceTest {
+class ExternalEmployeeServiceTest {
 
     @Mock
     private EmployeeRepository repo;
 
     @InjectMocks
-    private EmployeeService service;
+    private ExternalEmployeeService service;
     
     @Test
-    public void testEmployeeFound() throws ParseException {
+    void testEmployeeFound() throws ParseException {
         given(repo.findById(10)).willReturn(Optional.of(employee()));
 
-        EmployeeVO vo = service.getEmployee(10);
+        se.predictly.support.employee.model.internal.Employee vo = service.getEmployee(10);
         assertThat(vo).isNotNull();
         assertThat(vo.getFirstName()).isEqualTo("First");
         assertThat(vo.getLastName()).isEqualTo("Last");
         assertThat(vo.getEmployeeId()).isEqualTo(10);
-        assertThat(vo.getGender()).isEqualTo(GenderVO.FEMALE);
+        assertThat(vo.getGender()).isEqualTo(Gender.FEMALE);
     }
     
     @Test
-    public void testEmployeeFoundNotFound() throws ParseException {
+    void testEmployeeFoundNotFound() throws ParseException {
         given(repo.findById(11)).willReturn(Optional.ofNullable(null));
 
         assertThrows(EmployeeNotFoundException.class, () -> service.getEmployee(11));

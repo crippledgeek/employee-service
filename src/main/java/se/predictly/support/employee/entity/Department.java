@@ -1,4 +1,4 @@
-package se.predictly.support.employee.persistence.model;
+package se.predictly.support.employee.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
