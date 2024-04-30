@@ -1,4 +1,4 @@
-package se.predictly.support.employee.persistence.model;
+package se.predictly.support.employee.entity;
 
 import java.io.Serializable;
 import java.util.Date;

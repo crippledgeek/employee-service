@@ -4,26 +4,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.extern.slf4j.Slf4j;
-import se.predictly.support.employee.service.EmployeeService;
-import se.predictly.support.employee.service.model.EmployeeVO;
+import se.predictly.support.employee.model.internal.Employee;
+import se.predictly.support.employee.service.ExternalEmployeeService;
 
 @RestController
 @RequestMapping(path = "/employee")
 @Slf4j
 public class EmployeeController {
-    
-    @Autowired
-    private EmployeeService employeeService;
+
+    private final ExternalEmployeeService externalEmployeeService;
+
+    public EmployeeController(ExternalEmployeeService externalEmployeeService) {
+        this.externalEmployeeService = externalEmployeeService;
+    }
 
     @GetMapping(path = "/{employeeId}")
-    public EmployeeVO getEmployee(
+    public Employee getEmployee(
             @PathVariable(name = "employeeId") int employeeId,
             @RequestParam(required = false, defaultValue = "false") boolean detail) {
         log.debug("getEmployee({})", employeeId);
         if (detail) {
-            return employeeService.getCurrentDetailsOfEmployee(employeeId);
+            return externalEmployeeService.getCurrentDetailsOfEmployee(employeeId);
         } else {
-            return employeeService.getEmployee(employeeId);
+            return externalEmployeeService.getEmployee(employeeId);
         }
     }
 }

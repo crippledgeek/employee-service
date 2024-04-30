@@ -1,48 +1,15 @@
 package se.predictly.support.employee.service;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import lombok.extern.slf4j.Slf4j;
 import se.predictly.support.employee.exception.EmployeeNotFoundException;
-import se.predictly.support.employee.persistence.EmployeeRepository;
-import se.predictly.support.employee.persistence.model.Employee;
-import se.predictly.support.employee.service.model.EmployeeVO;
+import se.predictly.support.employee.model.internal.Employee;
 
-@Component
-@Slf4j
-public class EmployeeService {
+import java.time.LocalDate;
+import java.util.List;
 
-    @Autowired
-    private EmployeeRepository employeeRepo;
+public interface EmployeeService {
+    Employee getEmployee(int employeeId) throws EmployeeNotFoundException;
+    Employee getCurrentDetailsOfEmployee(int employeeId) throws EmployeeNotFoundException;
+    List<Employee> getEmployeesActiveInDepartment(int departmentId);
+    List<Employee> getEmployeesInDepartmentAtDate(int departmentId, LocalDate date);
 
-    public EmployeeVO getEmployee(int employeeId) throws EmployeeNotFoundException {
-        log.debug("getEmployee({}", employeeId);
-        Optional<Employee> employee = employeeRepo.findById(employeeId);
-        if (employee.isPresent()) {
-            return EmployeeMapper.map(employee.get());
-        }
-        return null;
     }
-    
-    public EmployeeVO getCurrentDetailsOfEmployee(int employeeId) throws EmployeeNotFoundException {
-        log.debug("getCurrentDetailsOfEmployee({})", employeeId);
-        // TODO Auto-generated method stub
-        return null;
-    }
-    
-    public List<EmployeeVO> getEmployeesActiveInDepartment(int departmentId) {
-        log.debug("getEmployeesActiveInDepartment({})", departmentId);
-        return new ArrayList<>();
-    }
-    
-    public List<EmployeeVO> getEmployeesInDepartmentAtDate(int departmentId, LocalDate date) {
-        log.debug("getEmployeesInDepartmentAtDate({}, {})", departmentId, date);
-        return new ArrayList<>();
-    }
-}

@@ -1,13 +1,12 @@
-package se.predictly.support.employee.persistence;
-
-import java.util.Date;
-import java.util.List;
+package se.predictly.support.employee.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import se.predictly.support.employee.entity.Title;
+import se.predictly.support.employee.entity.TitleKey;
 
-import se.predictly.support.employee.persistence.model.Title;
-import se.predictly.support.employee.persistence.model.TitleKey;
+import java.util.Date;
+import java.util.List;
 
 @Repository
 public interface TitleRepository extends CrudRepository<Title, TitleKey>{

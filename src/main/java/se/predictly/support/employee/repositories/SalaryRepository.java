@@ -1,12 +1,11 @@
-package se.predictly.support.employee.persistence;
-
-import java.util.List;
+package se.predictly.support.employee.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import se.predictly.support.employee.entity.Salary;
+import se.predictly.support.employee.entity.SalaryKey;
 
-import se.predictly.support.employee.persistence.model.Salary;
-import se.predictly.support.employee.persistence.model.SalaryKey;
+import java.util.List;
 
 @Repository
 public interface SalaryRepository extends CrudRepository<Salary, SalaryKey> {

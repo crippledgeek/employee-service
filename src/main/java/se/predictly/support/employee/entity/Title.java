@@ -1,4 +1,4 @@
-package se.predictly.support.employee.persistence.model;
+package se.predictly.support.employee.entity;
 
 import java.util.Date;
 
@@ -10,24 +10,25 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
-@Entity
-@Table(name = "salaries")
-@IdClass(SalaryKey.class)
 @Data
-public class Salary {
-    
+@Entity
+@Table(name = "titles")
+@IdClass(TitleKey.class)
+public class Title {
+
     @Id
     @Column(name = "emp_no")
     private int employeeId;
     
-    @Column(name = "salary")
-    private int salary;
+    @Id
+    @Column(name = "title")
+    private String title;
     
     @Id
     @Column(name = "from_date")
     private Date from;
     
-    @Column(name = "to_date")
+    @Column(name = "todate")
     private Date to;
-
+    
 }
