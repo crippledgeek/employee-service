@@ -29,7 +29,7 @@ public class ExternalEmployeeService implements EmployeeService {
         log.debug("getEmployee({}", employeeId);
         return employeeRepo.findById(employeeId)
                 .map(EmployeeMapper::map)
-                .orElse(null);
+                .orElseThrow(() -> new EmployeeNotFoundException(employeeId));
     }
     
     public se.predictly.support.employee.model.internal.Employee getCurrentDetailsOfEmployee(int employeeId) throws EmployeeNotFoundException {
