@@ -15,7 +15,7 @@ class EmployeeMapperTest {
     @Test
     void testMap() throws ParseException {
         Employee e = employee();
-        EmployeeVO vo = EmployeeMapper.map(e);
+        se.predictly.support.employee.model.internal.Employee vo = EmployeeMapper.map(e);
         assertThat(vo).isNotNull();
         assertThat(vo.getEmployeeId()).isEqualTo(10);
         assertThat(vo.getBirthDate()).isEqualTo("2000-10-10");
