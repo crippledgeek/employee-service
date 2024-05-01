@@ -1,4 +1,4 @@
-package se.predictly.support.employee.rest.model;
+package se.predictly.support.employee.error;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
