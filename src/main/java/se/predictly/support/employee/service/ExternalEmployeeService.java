@@ -3,15 +3,10 @@ package se.predictly.support.employee.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import se.predictly.support.employee.exception.EmployeeNotFoundException;
-import se.predictly.support.employee.entity.Employee;
 import se.predictly.support.employee.mapper.EmployeeMapper;
 import se.predictly.support.employee.repositories.EmployeeRepository;
 

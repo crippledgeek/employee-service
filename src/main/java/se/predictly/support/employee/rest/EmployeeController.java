@@ -1,6 +1,5 @@
 package se.predictly.support.employee.rest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +19,7 @@ public class EmployeeController {
 
     @GetMapping(path = "/{employeeId}")
     public Employee getEmployee(
-            @PathVariable(name = "employeeId") int employeeId,
+            @PathVariable int employeeId,
             @RequestParam(required = false, defaultValue = "false") boolean detail) {
         log.debug("getEmployee({})", employeeId);
         if (detail) {
