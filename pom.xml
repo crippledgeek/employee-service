@@ -15,6 +15,8 @@
     <description>Employee service</description>
 
     <properties>
+        <imageName>${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>
+        <docker.image.prefix>predictly</docker.image.prefix>
         <java.version>21</java.version>
     </properties>
 
@@ -57,29 +59,28 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <release>${java.version}</release>
+                    <mainClass>se.predictly.support.Application</mainClass>
+                    <image>
+                        <env>
+                            <BP_HEALTH_CHECKER_ENABLED>true</BP_HEALTH_CHECKER_ENABLED>
+                        </env>
+                        <buildpacks>
+                            <buildpack>urn:cnb:builder:paketo-buildpacks/java</buildpack>
+                            <buildpack>gcr.io/paketo-buildpacks/health-checker:latest</buildpack>
+                        </buildpacks>
+                        <name>${imageName}</name>
+                    </image>
+                    <imageBuilder>paketobuildpacks/builder-jammy-tiny</imageBuilder>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>2.7.0</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>dockerBuild</goal>
-                        </goals>
-                        <configuration>
-                            <to>
-                                <image>registry.predictly.se/predictly/${project.artifactId}</image>
-                            </to>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
