@@ -14,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import se.predictly.support.employee.entity.Employee;
 import se.predictly.support.employee.exception.EmployeeNotFoundException;
 import se.predictly.support.employee.model.internal.Gender;
 import se.predictly.support.employee.repositories.EmployeeRepository;
@@ -33,10 +34,10 @@ class ExternalEmployeeServiceTest {
 
         se.predictly.support.employee.model.internal.Employee vo = service.getEmployee(10);
         assertThat(vo).isNotNull();
-        assertThat(vo.getFirstName()).isEqualTo("First");
-        assertThat(vo.getLastName()).isEqualTo("Last");
-        assertThat(vo.getEmployeeId()).isEqualTo(10);
-        assertThat(vo.getGender()).isEqualTo(Gender.FEMALE);
+        assertThat(vo.firstName()).isEqualTo("First");
+        assertThat(vo.lastName()).isEqualTo("Last");
+        assertThat(vo.employeeId()).isEqualTo(10);
+        assertThat(vo.gender()).isEqualTo(Gender.FEMALE);
     }
     
     @Test
@@ -48,7 +49,7 @@ class ExternalEmployeeServiceTest {
 
     private Employee employee() throws ParseException {
         Employee e = new Employee();
-        e.setEmployeeId(10);
+        e.setId(10);
         e.setFirstName("First");
         e.setLastName("Last");
         e.setGender("F");
