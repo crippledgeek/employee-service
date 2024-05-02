@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import se.predictly.support.employee.exception.EmployeeNotFoundException;
 import se.predictly.support.employee.mapper.EmployeeMapper;
-import se.predictly.support.employee.repositories.EmployeeRepository;
 
 @Service
 @Slf4j
