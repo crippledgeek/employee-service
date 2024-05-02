@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: employee-service-v1
+  threads:
+    virtual:
+      enabled: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/employees
+    username: root
+    password: mysql
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        generate_statistics: true
+        format_sql: true
+  jackson:
+    default-property-inclusion: non_absent
+logging:
+    level:
+      org.hibernate.SQL: trace
+      org.hibernate.orm.jdbc.bind: trace
+      org.hibernate.stat: trace
+      org.hibernate.SQL_SLOW: trace
+      org.hibernate.cache: trace
