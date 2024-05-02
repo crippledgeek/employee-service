@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.Hibernate;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -15,7 +16,10 @@ import java.util.Objects;
 @Setter
 @Embeddable
 public class DeptEmpId implements Serializable {
+
+    @Serial
     private static final long serialVersionUID = 2481817984122660911L;
+
     @NotNull
     @Column(name = "emp_no", nullable = false)
     private Integer empNo;
