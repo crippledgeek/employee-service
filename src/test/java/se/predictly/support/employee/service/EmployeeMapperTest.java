@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
+import se.predictly.support.employee.entity.Employee;
 import se.predictly.support.employee.mapper.EmployeeMapper;
 
 class EmployeeMapperTest {
@@ -16,14 +17,14 @@ class EmployeeMapperTest {
         Employee e = employee();
         se.predictly.support.employee.model.internal.Employee vo = EmployeeMapper.map(e);
         assertThat(vo).isNotNull();
-        assertThat(vo.getEmployeeId()).isEqualTo(10);
-        assertThat(vo.getBirthDate()).isEqualTo("2000-10-10");
-        assertThat(vo.getHireDate()).isEqualTo("2010-01-16");
+        assertThat(vo.employeeId()).isEqualTo(10);
+        assertThat(vo.birthDate()).isEqualTo("2000-10-10");
+        assertThat(vo.hireDate()).isEqualTo("2010-01-16");
     }
 
     private Employee employee() throws ParseException {
         Employee e = new Employee();
-        e.setEmployeeId(10);
+        e.setId(10);
         e.setFirstName("First");
         e.setLastName("Last");
         e.setGender("F");
