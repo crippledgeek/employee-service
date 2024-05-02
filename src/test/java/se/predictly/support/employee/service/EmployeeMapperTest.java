@@ -7,7 +7,6 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
-import se.predictly.support.employee.entity.Employee;
 import se.predictly.support.employee.mapper.EmployeeMapper;
 
 class EmployeeMapperTest {
