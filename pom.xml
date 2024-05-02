@@ -15,9 +15,10 @@
     <description>Employee service</description>
 
     <properties>
-        <imageName>${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>
+        <imageName>${registry}/${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>
         <docker.image.prefix>predictly</docker.image.prefix>
         <java.version>21</java.version>
+        <registry>registry.predictly.se</registry>
     </properties>
 
     <dependencies>
