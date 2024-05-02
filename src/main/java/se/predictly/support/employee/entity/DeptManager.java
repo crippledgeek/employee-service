@@ -8,6 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
@@ -18,10 +19,10 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "titles")
-public class Title {
+@Table(name = "dept_manager")
+public class DeptManager {
     @EmbeddedId
-    private TitleId id;
+    private DeptManagerId id;
 
     @MapsId("empNo")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -29,7 +30,18 @@ public class Title {
     @JoinColumn(name = "emp_no", nullable = false)
     private Employee empNo;
 
-    @Column(name = "to_date")
+    @MapsId("deptNo")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "dept_no", nullable = false)
+    private Department deptNo;
+
+    @NotNull
+    @Column(name = "from_date", nullable = false)
+    private LocalDate fromDate;
+
+    @NotNull
+    @Column(name = "to_date", nullable = false)
     private LocalDate toDate;
 
 }

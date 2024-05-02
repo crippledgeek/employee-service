@@ -1,23 +1,27 @@
 package se.predictly.support.employee.entity;
 
-
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Data;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "departments")
-@Data
 public class Department {
-
     @Id
-    @Column(name = "dept_no")
-    private String departmentNumber;
-    
-    @Column(name = "dept_name")
-    private String departmentName;
-    
+    @Size(max = 4)
+    @Column(name = "dept_no", nullable = false, length = 4)
+    private String deptNo;
+
+    @Size(max = 40)
+    @NotNull
+    @Column(name = "dept_name", nullable = false, length = 40)
+    private String deptName;
+
 }

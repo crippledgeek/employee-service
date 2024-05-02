@@ -1,16 +1,10 @@
 package se.predictly.support.employee.model.internal;
 
-import lombok.Data;
-import lombok.experimental.Accessors;
+import lombok.Builder;
 
 import java.time.LocalDate;
 
-@Data
-@Accessors(chain = true)
-public class Salary {
-    
-    private int salary;
-    private LocalDate from;
-    private LocalDate to;
+@Builder
+public record Salary (int amount, LocalDate from, LocalDate to) {}
 
-}
+

@@ -15,7 +15,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import se.predictly.support.employee.exception.EmployeeNotFoundException;
-import se.predictly.support.employee.entity.Employee;
 import se.predictly.support.employee.model.internal.Gender;
 import se.predictly.support.employee.repositories.EmployeeRepository;
 
