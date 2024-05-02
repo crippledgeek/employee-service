@@ -16,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import se.predictly.support.employee.exception.EmployeeNotFoundException;
 import se.predictly.support.employee.model.internal.Gender;
+import se.predictly.support.employee.repositories.EmployeeRepository;
 
 @ExtendWith(MockitoExtension.class)
 class ExternalEmployeeServiceTest {

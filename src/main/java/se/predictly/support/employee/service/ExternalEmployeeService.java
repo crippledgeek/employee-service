@@ -8,20 +8,22 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import se.predictly.support.employee.exception.EmployeeNotFoundException;
 import se.predictly.support.employee.mapper.EmployeeMapper;
+import se.predictly.support.employee.repositories.EmployeeRepository;
 
 @Service
 @Slf4j
 public class ExternalEmployeeService implements EmployeeService {
 
-    private final EmployeeRepository employeeRepo;
+    private final EmployeeRepository employeeRepository;
 
-    public ExternalEmployeeService(EmployeeRepository employeeRepo) {
-        this.employeeRepo = employeeRepo;
+    public ExternalEmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
 
     public se.predictly.support.employee.model.internal.Employee getEmployee(int employeeId) throws EmployeeNotFoundException {
         log.debug("getEmployee({}", employeeId);
-        return employeeRepo.findById(employeeId)
+        return employeeRepository
+                .findById(employeeId)
                 .map(EmployeeMapper::map)
                 .orElseThrow(() -> new EmployeeNotFoundException(employeeId));
     }
