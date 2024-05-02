@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "employees")
+@Table(name = "employees", schema = "employees")
 public class Employee {
     @Id
     @Column(name = "emp_no", nullable = false)

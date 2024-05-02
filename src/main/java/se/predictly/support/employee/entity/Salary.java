@@ -4,7 +4,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
@@ -20,10 +19,10 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "dept_emp", schema = "employees", indexes = {@Index(name = "dept_no", columnList = "dept_no")})
-public class DeptEmp {
+@Table(name = "salaries", schema = "employees")
+public class Salary {
     @EmbeddedId
-    private DeptEmpId id;
+    private SalaryId id;
 
     @MapsId("empNo")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -31,15 +30,9 @@ public class DeptEmp {
     @JoinColumn(name = "emp_no", nullable = false)
     private Employee empNo;
 
-    @MapsId("deptNo")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "dept_no", nullable = false)
-    private Department deptNo;
-
     @NotNull
-    @Column(name = "from_date", nullable = false)
-    private LocalDate fromDate;
+    @Column(name = "salary", nullable = false)
+    private Integer salary;
 
     @NotNull
     @Column(name = "to_date", nullable = false)

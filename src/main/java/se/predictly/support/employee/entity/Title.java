@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "titles")
+@Table(name = "titles", schema = "employees")
 public class Title {
     @EmbeddedId
     private TitleId id;

@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.Hibernate;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -17,9 +16,7 @@ import java.util.Objects;
 @Setter
 @Embeddable
 public class TitleId implements Serializable {
-    @Serial
     private static final long serialVersionUID = -9192360051545954197L;
-
     @NotNull
     @Column(name = "emp_no", nullable = false)
     private Integer empNo;
