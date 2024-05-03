@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface TitleRepository extends ListCrudRepository<Title, TitleId> {
-  List<Title> findByEmpNoAndFrom(int employeeId, Date from);
+
 }

@@ -2,7 +2,6 @@ package se.predictly.support.employee.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.text.*;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,7 @@ import se.predictly.support.employee.mapper.EmployeeMapper;
 class EmployeeMapperTest {
 
     @Test
-    void testMap() throws ParseException {
+    void testMap() {
         Employee e = employee();
         se.predictly.support.employee.model.internal.Employee vo = EmployeeMapper.map(e);
         assertThat(vo).isNotNull();
@@ -22,7 +21,7 @@ class EmployeeMapperTest {
         assertThat(vo.hireDate()).isEqualTo("2010-01-16");
     }
 
-    private Employee employee() throws ParseException {
+    private Employee employee() {
         Employee e = new Employee();
         e.setId(10);
         e.setFirstName("First");
